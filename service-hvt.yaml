@@ -1,0 +1,14 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: hellomiragehvt
+spec:
+  template:
+    spec:
+      runtimeClassName: urunc
+      containers:
+        - image: harbor.nbfc.io/nubificus/knative-example-functions/mirage-httpreply-hvt:latest
+          imagePullPolicy: Always
+          env:
+            - name: RUNTIMECLASS
+              value: "generic"
